@@ -4,8 +4,9 @@ import { MongoClient } from 'mongodb';
 import path from 'path';
 
 const app = express();
-
+// eslint-disable-next-line no-undef
 app.use(express.static(path.join(__dirname, '/build')));
+
 app.use(bodyParser.json());
 
 const withDB = async (operations, res) => {
@@ -64,6 +65,7 @@ app.post('/api/articles/:name/add-comment', (req, res) => {
 
 // send all requests not caught to our frontend app
 app.get('*', (req, res) => {
+    // eslint-disable-next-line no-undef
     res.sendFile(path.join(__dirname + '/build/index.html'));
 });
 
